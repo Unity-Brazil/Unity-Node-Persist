@@ -8,3 +8,4 @@ Unity/*.userprefs
 .DS_STORE
 npm-debug.log
 /Node/node_modules
+/Node/config.sh
