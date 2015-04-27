@@ -1,0 +1,10 @@
+Unity/Library
+Unity/*.sln
+Unity/*.csproj
+Unity/*.suo
+Unity/*.userprefs
+
+
+.DS_STORE
+npm-debug.log
+/Node/node_modules
