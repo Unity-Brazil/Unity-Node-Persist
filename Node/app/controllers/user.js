@@ -8,7 +8,7 @@ module.exports = {
      */
     list : function(request, response) {
         db.user.findAll().then(function(users){
-            return response.status(200).json(users);
+            response.status(200).json({ result : users });
         });
     }
 
@@ -50,7 +50,7 @@ module.exports = {
     , delete : function(request, response) {
         var user = request.user;
         user.destroy().then(function() {
-            response.status(200).send('deleted');
+            response.status(200).json({ result : 'deleted' });
         }).catch(function(err){
             response.status(400).json(err);
         });
@@ -61,11 +61,15 @@ module.exports = {
      */
     , userById : function(request, response, next, id){
         db.user.find({ where : { id : id }}).then(function(user){
-            if(!user) response.status(404).send("User not found");
+            if(!user) response.status(404).json({ result : "User not found" });
             request.user = user;
             next();
         }).catch(function(err){
             next(err);
         });
+    }
+
+    , userByEmail : function(request, response){
+        return db.user.find({ where : { email : request.body.email }});
     }
 };
