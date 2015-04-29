@@ -10,15 +10,27 @@ public class Grid : MonoBehaviour
 
     private API api;
     private Row scoreGrid;
+
     public GridLayoutGroup GridRows;
     public GameObject RowPrefab;
+
+    private RectTransform Layout;
+    private int CountRows;
 
     public void AddRow()
     {
         GameObject row = (GameObject)Instantiate(RowPrefab);
         row.transform.SetParent(GridRows.transform);
         row.transform.localScale = new Vector3(1,1,1);
+        CountRows++;
+
         scoreGrid = row.GetComponent<Row>();
+
+        Layout = row.transform.parent.GetComponent<RectTransform>();
+
+        //Increase the height of the panel to getting scroll
+        if(CountRows > 10)
+            Layout.sizeDelta = new Vector2(Layout.sizeDelta.x, Layout.sizeDelta.y + 100);
     }
 
     public void Reload()
