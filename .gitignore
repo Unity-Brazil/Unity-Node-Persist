@@ -1,8 +1,9 @@
-Unity/Library
-Unity/*.sln
-Unity/*.csproj
-Unity/*.suo
-Unity/*.userprefs
+UnityPersistGame/Library
+UnityPersistGame/Temp
+UnityPersistGame/*.sln
+UnityPersistGame/*.csproj
+UnityPersistGame/*.suo
+UnityPersistGame/*.userprefs
 
 
 .DS_STORE
