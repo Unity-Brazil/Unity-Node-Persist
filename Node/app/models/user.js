@@ -8,8 +8,14 @@ module.exports = function(sequelize, DataTypes) {
         , allowNull : false
         , unique    : true
         , validate  : {
-            is      : /^\w+$/i
-          , len     : [3, 16]
+            is      : {
+              args  : /^\w+$/i
+            , msg   : "Username is not Valid, (do not use spaces)"
+            }
+          , len     : {
+              args  : [3, 16]
+            , msg   : "Username is not Valid, Length have to between 3 and 16"
+            }
         }
       }
       , email       : {
