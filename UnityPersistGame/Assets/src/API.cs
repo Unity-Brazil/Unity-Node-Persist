@@ -78,6 +78,25 @@ public class API
     }
 
     /// <summary>
+    /// Determines whether this json has error.
+    /// </summary>
+    /// <returns><c>true</c> if this instance has error; otherwise, <c>false</c>.</returns>
+    public bool HasError()
+    {
+        IDictionary dict = (IDictionary)JsonMapper.ToObject(GetResult());
+        return dict.Contains("error");
+    }
+
+    /// <summary>
+    /// Gets the error json.
+    /// </summary>
+    /// <returns>The error json.</returns>
+    public JsonData GetErrorJson()
+    {
+        return JsonMapper.ToObject(GetResult())["error"];
+    }
+
+    /// <summary>
     /// Gets the result json.
     /// </summary>
     /// <returns>The result json.</returns>
