@@ -18,13 +18,14 @@ module.exports = {
      * Create a score
      */
     , create : function(request, response) {
-        user.userByEmail(request, response).then(function(user){
+        db.user.find({ where : { email : request.body.email || request.body.user.email }})
+        .then(function(user) {
             request.body.user_score = user.id;
-            return db.score.create(request.body)
+            return db.score.create(request.body);
         }).then(function(score){
-            response.json(scores);
+            response.status(200).json({ result : score });
         }).catch(function(err){
-            response.status(400).json(err);
+            response.status(400).json({ error : err });
         });
     }
 
@@ -32,7 +33,7 @@ module.exports = {
      * Read score
      */
     , read : function(request, response) {
-        response.json(request.score);
+        response.json({ result : request.score});
     }
 
     /*
@@ -43,9 +44,9 @@ module.exports = {
         score = _.extend(score, request.body);
 
         score.save().then(function(score){
-            response.status(200).json(score);
+            response.status(200).json({ result : score });
         }).catch(function(err){
-            response.status(400).json(err);
+            response.status(400).json({ error : err });
         });
     }
 
@@ -57,7 +58,7 @@ module.exports = {
         score.destroy().then(function() {
             response.status(200).json({ result : 'deleted' });
         }).catch(function(err){
-            response.status(400).json(err);
+            response.status(400).json({ error : err });
         });
     }
 

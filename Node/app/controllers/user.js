@@ -17,9 +17,9 @@ module.exports = {
      */
     , create : function(request, response) {
         db.user.create(request.body).then(function(user){
-            response.status(200).json(user);
+            response.status(200).json({ result : user });
         }).catch(function(err){
-            response.status(400).json(err);
+            response.status(400).json({ error : err });
         });
     }
 
@@ -27,7 +27,7 @@ module.exports = {
      * Show a single user
      */
     , read : function(request, response) {
-        response.json(request.user);
+        response.json({ result : request.user });
     }
 
     /*
@@ -38,9 +38,9 @@ module.exports = {
         user = _.extend(user, request.body);
 
         user.save().then(function(user){
-            response.status(200).json(user);
+            response.status(200).json({ result : user });
         }).catch(function(err){
-            response.status(400).json(err);
+            response.status(400).json({ error : err });
         });
     }
 
@@ -52,24 +52,20 @@ module.exports = {
         user.destroy().then(function() {
             response.status(200).json({ result : 'deleted' });
         }).catch(function(err){
-            response.status(400).json(err);
+            response.status(400).json({ error: err });
         });
     }
 
     /*
      * Middleware for userId parameter
      */
-    , userById : function(request, response, next, id){
-        db.user.find({ where : { id : id }}).then(function(user){
-            if(!user) response.status(404).json({ result : "User not found" });
+    , userByEmail : function(request, response, next, email){
+        db.user.find({ where : { email : email }}).then(function(user){
+            if(!user) response.status(404).json({ error : "User not found" });
             request.user = user;
             next();
         }).catch(function(err){
             next(err);
         });
-    }
-
-    , userByEmail : function(request, response){
-        return db.user.find({ where : { email : request.body.email }});
     }
 };
