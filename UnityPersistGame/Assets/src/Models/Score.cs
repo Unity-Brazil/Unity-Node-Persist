@@ -5,8 +5,14 @@ using UnityEngine;
 public class Score
 {
     public int id { get; private set; }
-    public float value { get; set; }
-    public User user { get; set; }
+    public double value { get; set; }
+    public User user;
+
+    public Score() { }
+    public Score(double score)
+    {
+        value = score;
+    }
 
     public override string ToString()
     {

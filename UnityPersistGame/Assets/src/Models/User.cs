@@ -7,7 +7,14 @@ public class User
     public int id { get; private set; }
     public string username { get; set; }
     public string email { get; set; }
-    public DateTime createdAt { get; private set; }
+    public DateTime? createdAt { get; set; }
+
+    public User() {}
+    public User(string username, string email)
+    {
+        this.username = username;
+        this.email = email;
+    }
 
     public override string ToString()
     {
