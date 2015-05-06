@@ -5,7 +5,12 @@ var fs        = require("fs")
   , path      = require("path")
   , config    = require('../../config/config')
   , Sequelize = require("sequelize")
-  , sequelize = new Sequelize(config.database, config.username, config.password, config.config);
+  , sequelize = null;
+
+  if(process.env.DATABASE_URL)
+      sequelize = new Sequelize(process.env.DATABASE_URL, config.config);
+  else
+      sequelize = new Sequelize(config.database, config.username, config.password, config.config);
 
 var db = {};
 
