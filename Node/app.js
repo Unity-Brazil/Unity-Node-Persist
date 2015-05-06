@@ -9,12 +9,9 @@ var app = express();
 require('./config/express')(app);
 
 db.sequelize
-  .sync({ force : true})
-  /* .sync() */
-  .complete(function(err) {
-    if(err)
-        throw err[0];
-    else
+  /* .sync({ force : true}) */
+  .sync()
+  .then(function() {
         app.listen(process.env.PORT || 3000);
 });
 
