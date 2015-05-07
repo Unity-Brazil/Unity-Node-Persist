@@ -26,7 +26,16 @@ public class API
     /// <summary>
     /// The BAS e_ UR.
     /// </summary>
+#if UNITY_EDITOR
     private const string BASE_URL = "http://localhost:3000/";
+#else
+    private const string BASE_URL = "https://unity-node-persist.herokuapp.com/";
+#endif
+
+    public static string GetServer()
+    {
+        return BASE_URL;
+    }
 
     /// <summary>
     /// The headers.
