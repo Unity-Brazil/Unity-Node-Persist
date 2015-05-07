@@ -11,12 +11,16 @@ public class Panels : MonoBehaviour
 
     public static Panels Instance { get; private set; }
 
+    public Text lblServer;
+
     public void Awake()
     {
         Instance = this;
 
         //Initialize with email registration panel
         this.ShowEmail();
+
+        lblServer.text = API.GetServer();
     }
 
     public void ShowEmail()
