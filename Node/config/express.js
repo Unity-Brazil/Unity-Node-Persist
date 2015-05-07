@@ -30,6 +30,6 @@ module.exports = function(app) {
     });
 
     app.use(function(request, response) {
-        response.status(404).json({ result : "Route has not found" });
+        response.status(404).json({ error : "Route has not found" });
     });
 };
