@@ -3,6 +3,7 @@ var express      = require('express')
   , cookieParser = require('cookie-parser')
   , method       = require("method-override")
   , logger       = require('morgan')
+  , cors         = require('cors')
   , glob         = require('glob');
 
 module.exports = function(app) {
@@ -14,6 +15,12 @@ module.exports = function(app) {
     }));
     app.use(method());
     app.use(cookieParser());
+
+    //Cors API configuration
+    app.use(cors({
+        origin  : 'http://unity-brazil.github.io'
+      , methods : [ 'GET', 'POST', 'PUT', 'DELETE' ]
+    }));
 
     var routes = glob.sync(root+'/app/routes/*.js');
     routes.forEach(function(route) {
