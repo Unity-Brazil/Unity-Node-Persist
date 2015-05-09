@@ -11,8 +11,7 @@ var path     = require('path')
 
   var config = {
       development    : {
-          host       : host
-        , username   : user
+          username   : user
         , password   : password
         , database   : database
         , config     : {
@@ -22,8 +21,7 @@ var path     = require('path')
         }
       },
       production     : {
-          host       : host
-        , username   : user
+          username   : user
         , password   : password
         , database   : database
         , config     : {
