@@ -17,6 +17,11 @@ public class Grid : MonoBehaviour
     private RectTransform Layout;
     private int CountRows;
 
+    private void Awake()
+    {
+        Reload();
+    }
+
     public void AddRow()
     {
         GameObject row = (GameObject)Instantiate(RowPrefab);

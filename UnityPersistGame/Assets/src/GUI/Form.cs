@@ -46,7 +46,7 @@ public class Form : MonoBehaviour
         else if(!CheckUserName())
             lblErrors.text += "Username doesn't match";
         else {
-            Panels.Instance.ShowScore();
+            Panels.Instance.ShowGrid();
             Debug.Log(api.GetResultJson().ToJson());
             user = api.CastModel<User>(api.GetResultJson().ToJson());
             lblEmail.text = user.email;
