@@ -18,18 +18,6 @@ or clone this project
 
 `npm install`
 
-##Database
-
-I'm using Sequelize with `PostgreSQL`, but you use other database changing the dialect on `config/config.js` file
-
-`$ psql -h localhost -U user -p 5432 -d unity_db`
-
-###Create Database
-
-`# create database unity_db;`
-
-after run application sequelize will create our tables
-
 ##Run
 
 `npm start`
