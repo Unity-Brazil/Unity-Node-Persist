@@ -26,7 +26,7 @@
     "morgan": "^1.5.2",
     "pg": "^4.3.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^2.0.6"
+    "sequelize": "^5.21.2"
   },
   "devDependencies": {
     "mocha": "^2.2.4",
